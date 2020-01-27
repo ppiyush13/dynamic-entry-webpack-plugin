@@ -1,0 +1,44 @@
+{
+    "name": "dynamic-entry-webpack-plugin",
+    "version": "1.0.0",
+    "description": "webpack plugin to make entry point as dynamic import",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\"",
+        "build": "bili --format esm --format cjs"
+    },
+    "devDependencies": {
+        "bili": "^4.8.1"
+    },
+    "dependencies": {
+        "@babel/core": "^7.8.3",
+        "babel-plugin-transform-async-to-promises": "^0.8.15",
+        "isobject": "^4.0.0",
+        "jsesc": "^2.5.2",
+        "webpack-inject-plugin": "^1.5.4"
+    },
+    "keywords": [
+        "webpack",
+        "webpack-plugin",
+        "entry",
+        "dynamic-entry",
+        "dynamic-import"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin",
+    "author": {
+        "name": "Piyush Lodaya",
+        "email": "ppiyush13@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin/issues"
+    },
+    "files": [
+        "dist"
+    ]
+}
