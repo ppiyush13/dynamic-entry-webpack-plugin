@@ -103,6 +103,10 @@ webpack supports entry point config in various formats. So accordingly, **dynami
 - **function**
 
     When given function to entry point it is awaited and result is then processed to form entry module. Function must return string or array. Again use of this plugin is discouraged if function returns object as entry points.
+  
+## Contributing
+Pull requests and stars are always welcome. For bugs and feature requests, please [create an issue][issue-link]
 
 
 [async-to-promises]: https://github.com/rpetrich/babel-plugin-transform-async-to-promises
+[issue-link]: https://github.com/ppiyush13/dynamic-entry-webpack-plugin/issues
