@@ -4,12 +4,16 @@
     "description": "webpack plugin to make entry point as dynamic import",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
+    "license": "MIT",
+    "homepage": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin",
+    "author": {
+        "name": "Piyush Lodaya",
+        "email": "ppiyush13@gmail.com"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\"",
-        "build": "bili --format esm --format cjs"
-    },
-    "devDependencies": {
-        "bili": "^4.8.1"
+        "build": "bili --format esm --format cjs",
+        "release": "np --no-yarn --no-cleanup --no-2fa"
     },
     "dependencies": {
         "@babel/core": "^7.8.3",
@@ -18,6 +22,10 @@
         "jsesc": "^2.5.2",
         "webpack-inject-plugin": "^1.5.4"
     },
+    "devDependencies": {
+        "bili": "^4.8.1",
+        "np": "^5.2.1"
+    },
     "keywords": [
         "webpack",
         "webpack-plugin",
@@ -25,12 +33,6 @@
         "dynamic-entry",
         "dynamic-import"
     ],
-    "license": "MIT",
-    "homepage": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin",
-    "author": {
-        "name": "Piyush Lodaya",
-        "email": "ppiyush13@gmail.com"
-    },
     "repository": {
         "type": "git",
         "url": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin.git"
