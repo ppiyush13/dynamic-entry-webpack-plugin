@@ -32,7 +32,7 @@ webpack plugin to make entry point as dynamic import
 - This behavior of webpack is leveraged to provide only single entry chunk, which will load dependent and main chunks.
 
 ## Usage
-    Create a object of plugin and pass it to the webpack plugins config.
+Create a object of plugin and pass it to the webpack plugins config.
 
     ```js
 
@@ -49,8 +49,8 @@ webpack plugin to make entry point as dynamic import
   
     ```
 
-    **Options**  
-    **exportable** - boolean, optional - To make entry module exportable. **Default: true**  
+**Options**  
+**exportable** - boolean, optional - To make entry module exportable. **Default: true**  
 
 ## Entry points
 
