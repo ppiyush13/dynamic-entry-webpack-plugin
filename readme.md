@@ -3,12 +3,12 @@ webpack plugin to make entry point as dynamic import
 
 ## Motivation
 
-- Whenever creating front-end applications, multiple chunks might get created. In order to load our application certain chunks needs to be present before loading our main bundle.
+- Whenever creating front-end applications, webpack(based on configurations) might generated multiple chunks. In order to load our application, certain chunks needs to be present before loading our main chunk.
     Example, vendor chunk must be present before main bundle is loaded.  
 
-- Loading of entry chunks before main bundle is taken by **html-webpack-plugin**. For example  
+- Loading of dependent chunks before main chunk is taken by **html-webpack-plugin**. For example  
 
-    We might see some like this injected in HTML
+    We might encounter script tags injected in HTML
 
     ```html
   
@@ -18,17 +18,19 @@ webpack plugin to make entry point as dynamic import
         <script src="/main.1016aebc24e44815f6ad.hot-update.js"></script>
   
     ```  
-    This works fine for SPA, where bundle is intended to be loaded in browser.
+    This works fine for SPA, where bundles are intended to be loaded in browser.
   
-- Consider the scenario where you need to load application bundle conditionally. 
-    For example, loading several micro-frontends bundles at run-time or loading a exportable library
-    For this cases, bundles are hosted on different servers. They are included on runtime.
+- Consider the scenario where you need to load application bundle conditionally.  
+    For example, loading several micro-frontends bundles at run-time or loading a exportable library.  
+    Such bundles are hosted on different servers and they are included into parent application at runtime.
     
-- For scenarios described above, it will be best if we could load entry bundle, which in turn load the main bundle and entry chunks needed before main.
+- For scenarios described above, it will be best if we could load single chunk, which in turn loads all the dependent chunks and main chunk for us. 
   
-- This is where **dynamic-entry-webpack-plugin** comes handy. It will turn all webpack entry points into dynamic import because webpack already knows which all dependent chunks are needed for particular dynamic import. Webpack ensures that all the dependend modules for dynamic import are loaded then the actual module is loaded.
+- This is where **dynamic-entry-webpack-plugin** comes handy. It will turn all webpack entry points into dynamic import statements placed in a dynamic in-memory module. The actual entry point configuration is then updated with this new dyanmic module.  
+
+- Webpack internally has all the information about dependent chunks for given chunk. When dynamically loading a module, webpack ensures that all the dependend modules for dynamic import are loaded first then the asked module is loaded.  
   
-- This behavior os webpack is leveraged to provide only single entry bundle, which will load all entry chunks and main bundle.
+- This behavior of webpack is leveraged to provide only single entry chunk, which will load dependent and main chunks.
 
 ## Usage
     Create a object of plugin and pass it to the webpack plugins config.
