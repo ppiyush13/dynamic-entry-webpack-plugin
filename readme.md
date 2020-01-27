@@ -34,20 +34,20 @@ webpack plugin to make entry point as dynamic import
 ## Usage
 Create a object of plugin and pass it to the webpack plugins config.
 
-    ```js
+```js
 
-        const DynamicEntry = require('dynamic-entry-webpack-plugin');
+    const DynamicEntry = require('dynamic-entry-webpack-plugin');
 
-        module.exports = {
-            ...,
-            plugins: [
-                new DynamicEntry({
-                    exportable: true,
-                }),
-            ]
-        };
-  
-    ```
+    module.exports = {
+        ...,
+        plugins: [
+            new DynamicEntry({
+                exportable: true,
+            }),
+        ]
+    };
+
+```
 
 **Options**  
 **exportable** - boolean, optional - To make entry module exportable. **Default: true**  
