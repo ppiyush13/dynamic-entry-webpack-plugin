@@ -1,6 +1,6 @@
 {
     "name": "dynamic-entry-webpack-plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "webpack plugin to make entry point as dynamic import",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
