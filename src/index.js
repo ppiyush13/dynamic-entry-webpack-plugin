@@ -3,6 +3,7 @@ import generateEntryModule from './generateEntryModule';
 
 export default class DynamicEntryPlugin {
     constructor(options) {
+        options = options || {};
         this.exportable = options.exportable == null
             ? true
             : options.exportable;
