@@ -10,7 +10,8 @@
         "email": "ppiyush13@gmail.com"
     },
     "scripts": {
-        "test": "jest --runInBand --coverage",
+        "test": "jest --runInBand",
+        "test:cover": "jest --runInBand --coverage",
         "release": "np --no-yarn --no-cleanup --no-2fa"
     },
     "dependencies": {
@@ -40,6 +41,6 @@
         "url": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin/issues"
     },
     "files": [
-        "dist"
+        "src"
     ]
 }
