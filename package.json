@@ -1,6 +1,6 @@
 {
     "name": "dynamic-entry-webpack-plugin",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "webpack plugin to make entry point as dynamic import",
     "main": "src/index.js",
     "license": "MIT",
