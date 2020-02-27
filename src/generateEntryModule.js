@@ -1,30 +1,18 @@
-import isObject from 'isobject';
-import { transformSync } from "@babel/core";
-import jsesc from 'jsesc';
+const { transformSync } = require("@babel/core");
+const jsesc = require('jsesc');
 
-const generateModuleContent = (originalEntry) => {
-    if (typeof originalEntry === 'string')
-        return StringEntry(originalEntry);
-    if (Array.isArray(originalEntry))
-        return ArrayEntry(originalEntry);
-    if (typeof originalEntry === 'function')
-        return FunctionEntry(originalEntry);
-    if (isObject(originalEntry))
-        return ObjectEntry(originalEntry);
-};
-
-const generateEntryModule = async (originalEntry, exportable) => {
-    const content = await generateModuleContent(originalEntry);
+const generateEntryModule = (originalEntry, exportable) => {
+    const content = Array.isArray(originalEntry)
+        ? ArrayEntry(originalEntry)
+        : StringEntry(originalEntry);
 
     return exportable
-        ? `export default () => ${content};`
+        ? `export default () => ${content}`
         : content;
 };
 
-const generateImport = (modulePath, chunkName) => {
-    const importStatement = chunkName
-        ? `import(/* webpackChunkName: "${chunkName}" */'${modulePath}')`
-        : `import('${modulePath}')`;
+const generateImport = (modulePath) => {
+    const importStatement = `import('${modulePath}');`;
 
     return jsesc(importStatement, {
         quotes: 'backtick'
@@ -75,34 +63,4 @@ const ArrayEntry = (originalEntry) => {
     return result.code;
 };
 
-const FunctionEntry = (originalEntry) => {
-    /**
-     * entry is a function
-     * Lets resolve this function and then call generateFile again
-    */
-    return Promise.resolve(originalEntry())
-        .then(newEntry => generateModuleContent(newEntry));
-};
-
-const ObjectEntry = (originalEntry) => {
-    /**
-     * Entry is object
-     * Simply load all the entries as dynamic imports 
-     * wrapped within Promise.all
-    */
-    const imports = Object.keys(originalEntry).reduce((acc, key) => {
-        const entry = originalEntry[key];
-        acc.push(generateModuleContent(entry));
-        return acc;
-    }, []);
-
-    return `Promise.all([${imports.join(' , ')}]);`;
-};
-
-export {
-    generateEntryModule as default,
-    StringEntry,
-    ArrayEntry,
-    FunctionEntry,
-    ObjectEntry
-};
+module.exports = generateEntryModule;

@@ -2,8 +2,8 @@
     "name": "dynamic-entry-webpack-plugin",
     "version": "1.0.2",
     "description": "webpack plugin to make entry point as dynamic import",
-    "main": "dist/index.js",
-    "module": "dist/index.esm.js",
+    "main": "src/index.js",
+    "module": "src/index.esm.js",
     "license": "MIT",
     "homepage": "https://github.com/ppiyush13/dynamic-entry-webpack-plugin",
     "author": {
@@ -11,19 +11,19 @@
         "email": "ppiyush13@gmail.com"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\"",
-        "build": "bili --format esm --format cjs",
+        "test": "jest --runInBand --coverage",
         "release": "np --no-yarn --no-cleanup --no-2fa"
     },
     "dependencies": {
         "@babel/core": "^7.8.3",
         "babel-plugin-transform-async-to-promises": "^0.8.15",
+        "fast-deep-equal": "^3.1.1",
         "isobject": "^4.0.0",
         "jsesc": "^2.5.2",
-        "webpack-inject-plugin": "^1.5.4"
+        "loader-utils": "^1.4.0"
     },
     "devDependencies": {
-        "bili": "^4.8.1",
+        "jest": "^25.1.0",
         "np": "^5.2.1"
     },
     "keywords": [
